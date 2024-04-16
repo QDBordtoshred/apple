@@ -20,6 +20,8 @@ import Mushroom from './Mushroom.js';
 import Coin from './Coin.js';
 import FlyingUFO from './FlyingUFO.js';
 import Alien from './Alien.js';
+import Hole from './Hole.js';
+
 
 //test comment
 
@@ -181,6 +183,23 @@ const GameSetup = {
               },
       },
       platforms: {
+        grass: { src: "/images/platformer/platforms/grass.png" },
+        alien: { src: "/images/platformer/platforms/alien.png" },
+        bricks: { src: "/images/platformer/platforms/brick_wall.png" },
+        block: { src: "/images/platformer/platforms/brick_block.png" }, //MAY need 3 new variables: sizeRatio, widthRatio, and heightRatio
+        itemBlock: {
+          src: "/images/platformer/platforms/mario_block_spritesheet_v2.png",
+          sizeRatio: 83.2,
+          widthRatio: 0.5,
+          heightRatio: 1.0,
+          width: 204,
+          height: 204,
+          scaleSize: 80,
+          speedRatio: 0.7,
+          hitbox: { widthPercentage: 0.4, heightPercentage: -0.2}
+        }
+      },
+      holes: {
         grass: { src: "/images/platformer/platforms/grass.png" },
         alien: { src: "/images/platformer/platforms/alien.png" },
         bricks: { src: "/images/platformer/platforms/brick_wall.png" },
@@ -400,6 +419,7 @@ const GameSetup = {
             { name: 'blocks', id: 'jumpPlatform', class: BlockPlatform, data: this.assets.platforms.block, xPercentage: 0.2, yPercentage: 0.85 },
             { name: 'blocks', id: 'jumpPlatform', class: BlockPlatform, data: this.assets.platforms.block, xPercentage: 0.2368, yPercentage: 0.85 },
             { name: 'blocks', id: 'jumpPlatform', class: BlockPlatform, data: this.assets.platforms.block, xPercentage: 0.2736, yPercentage: 0.85 },
+            { name: 'hole', id: 'hole', class: Hole, data: this.assets.hole.block, xPercentage: 0.2736, yPercentage: 1 },
             { name: 'blocks', id: 'wall', class: BlockPlatform, data: this.assets.platforms.block, xPercentage: 0.6, yPercentage: 1 },
             { name: 'itemBlock', id: 'jumpPlatform', class: JumpPlatform, data: this.assets.platforms.itemBlock, xPercentage: 0.4, yPercentage: 0.65 }, //item block is a platform
             { name: 'goomba', id: 'goomba', class: Goomba, data: this.assets.enemies.goomba, xPercentage: 0.3, yPercentage: 1, minPosition: 0.05},
