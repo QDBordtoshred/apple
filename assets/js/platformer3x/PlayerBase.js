@@ -263,6 +263,7 @@ export class PlayerBase extends Character {
      */
     handleCollisionStart() {
         this.handleCollisionEvent("jumpPlatform");
+        this.handleCollisionEvent("jumpHole");
         this.handleCollisionEvent("wall");
         this.handleCollisionEvent("floor");
     }
@@ -320,6 +321,13 @@ export class PlayerBase extends Character {
         switch (this.state.collision) {
             // 1. Player is on a jump platform
             case "jumpPlatform":
+                // Player is on top of the jump platform
+                if (this.collisionData.touchPoints.this.top) {
+                    this.state.movement = { up: false, down: false, left: true, right: true, falling: false};
+                    this.gravityEnabled = false;
+                }
+                break;
+                case "jumpHole":
                 // Player is on top of the jump platform
                 if (this.collisionData.touchPoints.this.top) {
                     this.state.movement = { up: false, down: false, left: true, right: true, falling: false};

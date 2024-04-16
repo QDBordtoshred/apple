@@ -311,6 +311,31 @@ export class Player extends Character {
             }
         }
     }
+    if (this.collisionData.touchPoints.other.id === "jumpHole") {
+        if (this.collisionData.touchPoints.this.top) {
+            this.movement.down = false; // enable movement down without gravity
+            this.gravityEnabled = false;
+            this.setAnimation(this.directionKey); // set animation to direction
+            GameEnv.playSound("stomp")
+        } else { 
+        if (this.collisionData.touchPoints.other.left) {
+            this.movement.right = false;
+            this.gravityEnabled = true;
+            this.y -= GameEnv.gravity; // allows movemnt on platform, but climbs walls
+            GameEnv.playSound("boing")
+
+            // this.x -= this.isActiveAnimation("s") ? this.moveSpeed : this.speed;  // Move to left
+
+        }
+        if (this.collisionData.touchPoints.other.right) {
+            this.movement.left = false;
+            this.gravityEnabled = true;
+            this.y -= GameEnv.gravity; // allows movemnt on platform, but climbs walls
+            GameEnv.playSound("boing")
+            // this.x += this.isActiveAnimation("s") ? this.moveSpeed : this.speed;  // Move to right
+        }
+    }
+}
         // Fall Off edge of Jump platform
         else if (this.movement.down === false) {
             this.movement.down = true;          

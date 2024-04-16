@@ -112,6 +112,11 @@ export class FlyingGoomba extends Character {
                 this.speed = -this.speed;            
             }
         }
+        if (this.collisionData.touchPoints.other.id === "jumpHole") {
+            if (this.collisionData.touchPoints.other.left || this.collisionData.touchPoints.other.right) {
+                this.speed = -this.speed;            
+            }
+        }
     }
 }
 
