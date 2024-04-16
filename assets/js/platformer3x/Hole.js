@@ -1,6 +1,6 @@
 import GameEnv from './GameEnv.js';
 import GameObject from './GameObject.js';
-export class hole extends GameObject {
+export class Hole extends GameObject {
     constructor(canvas, image, data, xPercentage, yPercentage) {
         super(canvas, image, data);
         this.holeX = xPercentage * GameEnv.innerWidth;
